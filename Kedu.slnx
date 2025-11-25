@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Kedu.Application/Kedu.Application.csproj" />
+  <Project Path="Kedu.Domain/Kedu.Domain.csproj" />
+  <Project Path="Kedu.Infra/Kedu.Infra.csproj" />
+  <Project Path="Kedu.Test/Kedu.Test.csproj" />
+  <Project Path="Kedu/Kedu.csproj" />
+</Solution>
