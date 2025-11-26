@@ -1,4 +1,6 @@
-﻿using Kedu.Infra.Data;
+﻿using Kedu.Application.Interfaces;
+using Kedu.Infra.Data;
+using Kedu.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,13 @@ public static class ServiceCollectionExtensions
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             options.UseNpgsql(connectionString);
         });
+
+        // Register repositories
+        services.AddScoped<IResponsavelFinanceiroRepository, ResponsavelFinanceiroRepository>();
+        services.AddScoped<IPlanoDePagamentoRepository, PlanoDePagamentoRepository>();
+        services.AddScoped<ICobrancaRepository, CobrancaRepository>();
+        services.AddScoped<IPagamentoRepository, PagamentoRepository>();
+        services.AddScoped<ICentroDeCustoRepository, CentroDeCustoRepository>();
 
         return services;
     }

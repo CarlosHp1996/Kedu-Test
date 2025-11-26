@@ -2,7 +2,7 @@ using Kedu.Domain.Entities;
 
 namespace Kedu.Application.Interfaces;
 
-public interface ICobrancaRepository : IRepository<Cobranca>
+public interface ICobrancaRepository : IBaseRepository<Cobranca>
 {
     Task<IEnumerable<Cobranca>> GetByResponsavelIdAsync(int responsavelId);
     

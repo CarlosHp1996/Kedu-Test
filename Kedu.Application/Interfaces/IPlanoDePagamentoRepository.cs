@@ -2,7 +2,7 @@ using Kedu.Domain.Entities;
 
 namespace Kedu.Application.Interfaces;
 
-public interface IPlanoDePagamentoRepository : IRepository<PlanoDePagamento>
+public interface IPlanoDePagamentoRepository : IBaseRepository<PlanoDePagamento>
 {
     Task<PlanoDePagamento?> GetWithCobrancasAsync(int id);
     
