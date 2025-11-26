@@ -21,6 +21,9 @@ public static class ServiceCollectionExtensions
         IMapper mapper = mapperConfig.CreateMapper();
         services.AddSingleton(mapper);
 
+        // MediatR
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly));
+
         return services;
     }
 }

@@ -12,10 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="Models\Dtos\" />
     <Folder Include="Models\Filters\" />
-    <Folder Include="Queries\" />
     <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 
