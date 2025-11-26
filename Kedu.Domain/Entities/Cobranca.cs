@@ -11,8 +11,6 @@ public class Cobranca
     public MetodoPagamento MetodoPagamento { get; set; }
     public StatusCobranca Status { get; set; } = StatusCobranca.Emitida;
     public required string CodigoPagamento { get; set; }
-    public DateTime DataCriacao { get; set; }
-    public DateTime? DataAtualizacao { get; set; }
 
     public virtual PlanoDePagamento PlanoDePagamento { get; set; } = null!;
     public virtual ICollection<Pagamento> Pagamentos { get; set; } = [];

@@ -5,10 +5,7 @@ public class PlanoDePagamento
     public int Id { get; set; }
     public int ResponsavelFinanceiroId { get; set; }
     public int CentroDeCustoId { get; set; }
-    public string? Descricao { get; set; }
     public decimal ValorTotal => Cobrancas?.Sum(c => c.Valor) ?? 0;
-    public DateTime DataCriacao { get; set; }
-    public DateTime? DataAtualizacao { get; set; }
 
     public virtual ResponsavelFinanceiro ResponsavelFinanceiro { get; set; } = null!;
     public virtual CentroDeCusto CentroDeCusto { get; set; } = null!;
