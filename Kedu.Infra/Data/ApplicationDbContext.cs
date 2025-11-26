@@ -1,4 +1,5 @@
 ﻿using Kedu.Domain.Entities;
+using Kedu.Domain.Enums;
 using Kedu.Infra.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,5 +26,32 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfiguration(new PlanoDePagamentoConfiguration());
         modelBuilder.ApplyConfiguration(new CobrancaConfiguration());
         modelBuilder.ApplyConfiguration(new PagamentoConfiguration());
+
+        SeedData(modelBuilder);
+    }
+
+    private static void SeedData(ModelBuilder modelBuilder)
+    {
+        // Seed default cost centers
+        modelBuilder.Entity<CentroDeCusto>().HasData(
+            new CentroDeCusto
+            {
+                Id = 1,
+                Nome = "Matrícula",
+                Tipo = TipoCentroDeCusto.Matricula
+            },
+            new CentroDeCusto
+            {
+                Id = 2,
+                Nome = "Mensalidade",
+                Tipo = TipoCentroDeCusto.Mensalidade
+            },
+            new CentroDeCusto
+            {
+                Id = 3,
+                Nome = "Material Escolar",
+                Tipo = TipoCentroDeCusto.Material
+            }
+        );
     }
 }
