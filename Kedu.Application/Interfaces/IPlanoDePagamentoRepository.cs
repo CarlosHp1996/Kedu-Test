@@ -1,0 +1,12 @@
+using Kedu.Domain.Entities;
+
+namespace Kedu.Application.Interfaces;
+
+public interface IPlanoDePagamentoRepository : IRepository<PlanoDePagamento>
+{
+    Task<PlanoDePagamento?> GetWithCobrancasAsync(int id);
+    
+    Task<IEnumerable<PlanoDePagamento>> GetByResponsavelIdAsync(int responsavelId);
+    
+    Task<decimal> GetTotalValueAsync(int planoId);
+}
