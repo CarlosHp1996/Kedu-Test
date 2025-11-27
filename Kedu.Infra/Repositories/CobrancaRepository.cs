@@ -37,4 +37,13 @@ public class CobrancaRepository : BaseRepository<Cobranca>, ICobrancaRepository
             .Include(c => c.Pagamentos)
             .FirstOrDefaultAsync(c => c.CodigoPagamento == codigoPagamento);
     }
+
+    public async Task<IEnumerable<Cobranca>> GetByPlanoDePagamentoIdAsync(int planoId)
+    {
+        return await _dbSet
+            .Include(c => c.Pagamentos)
+            .Where(c => c.PlanoDePagamentoId == planoId)
+            .OrderBy(c => c.DataVencimento)
+            .ToListAsync();
+    }
 }

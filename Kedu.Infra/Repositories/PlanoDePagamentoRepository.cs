@@ -38,4 +38,13 @@ public class PlanoDePagamentoRepository : BaseRepository<PlanoDePagamento>, IPla
 
         return plano?.Cobrancas.Sum(c => c.Valor) ?? 0;
     }
+
+    public async Task<PlanoDePagamento?> GetByResponsavelAndCentroDeCustoAsync(int responsavelId, int centroDeCustoId)
+    {
+        return await _dbSet
+            .Include(p => p.Cobrancas)
+            .Include(p => p.CentroDeCusto)
+            .Include(p => p.ResponsavelFinanceiro)
+            .FirstOrDefaultAsync(p => p.ResponsavelFinanceiroId == responsavelId && p.CentroDeCustoId == centroDeCustoId);
+    }
 }

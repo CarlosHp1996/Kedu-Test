@@ -1,7 +1,7 @@
 using MediatR;
 using AutoMapper;
 using Kedu.Domain.Entities;
-using Kedu.Application.Interfaces;
+using Kedu.Application.Services.Interfaces;
 using Kedu.Application.Models.Responses;
 using Kedu.Domain.Helpers;
 
@@ -9,37 +9,40 @@ namespace Kedu.Application.Commands.ResponsavelFinanceiro.Handlers;
 
 public class CreateResponsavelFinanceiroHandler : IRequestHandler<CreateResponsavelFinanceiroCommand, Result<ResponsavelFinanceiroResponse>>
 {
-    private readonly IResponsavelFinanceiroRepository _repository;
+    private readonly IResponsavelFinanceiroService _service;
     private readonly IMapper _mapper;
 
-    public CreateResponsavelFinanceiroHandler(IResponsavelFinanceiroRepository repository, IMapper mapper)
+    public CreateResponsavelFinanceiroHandler(IResponsavelFinanceiroService service, IMapper mapper)
     {
-        _repository = repository;
+        _service = service;
         _mapper = mapper;
     }
 
     public async Task<Result<ResponsavelFinanceiroResponse>> Handle(CreateResponsavelFinanceiroCommand request, CancellationToken cancellationToken)
     {
-        try
+        var responsavel = new Domain.Entities.ResponsavelFinanceiro
         {
-            var responsavel = new Domain.Entities.ResponsavelFinanceiro
-            {
-                Nome = request.Nome
-            };
+            Nome = request.Nome
+        };
 
-            var createdResponsavel = await _repository.AddAsync(responsavel);
-            var response = _mapper.Map<ResponsavelFinanceiroResponse>(createdResponsavel);
-            
-            return new Result<ResponsavelFinanceiroResponse>(response)
+        var result = await _service.CreateResponsavelFinanceiroAsync(responsavel);
+        
+        if (!result.HasSuccess)
+        {
+            return new Result<ResponsavelFinanceiroResponse>
             {
-                Message = "Responsável financeiro criado com sucesso"
+                HasSuccess = result.HasSuccess,
+                Errors = result.Errors,
+                HttpStatusCode = result.HttpStatusCode,
+                Message = result.Message
             };
         }
-        catch (Exception ex)
+
+        var response = _mapper.Map<ResponsavelFinanceiroResponse>(result.Value);
+        
+        return new Result<ResponsavelFinanceiroResponse>(response)
         {
-            var result = new Result<ResponsavelFinanceiroResponse>();
-            result.WithException($"Erro ao criar responsável financeiro: {ex.Message}");
-            return result;
-        }
+            Message = result.Message
+        };
     }
 }

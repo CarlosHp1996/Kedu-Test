@@ -9,4 +9,6 @@ public interface ICobrancaRepository : IBaseRepository<Cobranca>
     Task<int> CountByResponsavelIdAsync(int responsavelId);
     
     Task<Cobranca?> GetByCodigoPagamentoAsync(string codigoPagamento);
+    
+    Task<IEnumerable<Cobranca>> GetByPlanoDePagamentoIdAsync(int planoId);
 }

@@ -9,4 +9,6 @@ public interface IPlanoDePagamentoRepository : IBaseRepository<PlanoDePagamento>
     Task<IEnumerable<PlanoDePagamento>> GetByResponsavelIdAsync(int responsavelId);
     
     Task<decimal> GetTotalValueAsync(int planoId);
+    
+    Task<PlanoDePagamento?> GetByResponsavelAndCentroDeCustoAsync(int responsavelId, int centroDeCustoId);
 }

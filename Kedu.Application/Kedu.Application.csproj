@@ -14,7 +14,6 @@
   <ItemGroup>
     <Folder Include="Models\Dtos\" />
     <Folder Include="Models\Filters\" />
-    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
 using Kedu.Infra.Extensions;
+using Kedu.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,9 @@ builder.Services.AddControllers();
 
 // Infrastructure Configuration
 builder.Services.AddInfrastructure(builder.Configuration);
+
+// Application Configuration
+builder.Services.AddApplication();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

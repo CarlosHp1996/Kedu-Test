@@ -1,6 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
 using Kedu.Application.Mappings;
+using Kedu.Application.Services;
+using Kedu.Application.Services.Interfaces;
 
 namespace Kedu.Application.Extensions;
 
@@ -23,6 +25,12 @@ public static class ServiceCollectionExtensions
 
         // MediatR
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly));
+
+        // Business Services
+        services.AddScoped<IResponsavelFinanceiroService, ResponsavelFinanceiroService>();
+        services.AddScoped<IPlanoDePagamentoService, PlanoDePagamentoService>();
+        services.AddScoped<ICobrancaService, CobrancaService>();
+        services.AddScoped<IPaymentCodeGenerator, PaymentCodeGenerator>();
 
         return services;
     }
