@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,10 +35,6 @@
     <ProjectReference Include="..\Kedu.Domain\Kedu.Domain.csproj" />
     <ProjectReference Include="..\Kedu.Infra\Kedu.Infra.csproj" />
     <ProjectReference Include="..\Kedu.Test\Kedu.Test.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
