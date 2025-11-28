@@ -51,7 +51,6 @@ if (app.Environment.IsDevelopment())
         c.DefaultModelExpandDepth(2);
         c.DefaultModelRendering(Swashbuckle.AspNetCore.SwaggerUI.ModelRendering.Model);
         c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
-        c.EnableFilter();
     });
 }
 
