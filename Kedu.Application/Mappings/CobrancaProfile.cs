@@ -22,7 +22,8 @@ public class CobrancaProfile : Profile
 
         CreateMap<Cobranca, CobrancaDetailResponse>()
             .ForMember(dest => dest.MetodoPagamentoDescricao, opt => opt.MapFrom(src => GetMetodoPagamentoDescricao(src.MetodoPagamento)))
-            .ForMember(dest => dest.StatusDescricao, opt => opt.MapFrom(src => GetStatusDescricao(src.Status)));
+            .ForMember(dest => dest.StatusDescricao, opt => opt.MapFrom(src => GetStatusDescricao(src.Status)))
+            .ForMember(dest => dest.PlanoDePagamento, opt => opt.MapFrom(src => src.PlanoDePagamento));
     }
 
     private static string GetMetodoPagamentoDescricao(MetodoPagamento metodo)

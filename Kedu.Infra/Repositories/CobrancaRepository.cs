@@ -46,4 +46,15 @@ public class CobrancaRepository : BaseRepository<Cobranca>, ICobrancaRepository
             .OrderBy(c => c.DataVencimento)
             .ToListAsync();
     }
+
+    public async Task<Cobranca?> GetByIdWithRelatedDataAsync(int id)
+    {
+        return await _dbSet
+            .Include(c => c.PlanoDePagamento)
+                .ThenInclude(p => p.ResponsavelFinanceiro)
+            .Include(c => c.PlanoDePagamento)
+                .ThenInclude(p => p.CentroDeCusto)
+            .Include(c => c.Pagamentos)
+            .FirstOrDefaultAsync(c => c.Id == id);
+    }
 }

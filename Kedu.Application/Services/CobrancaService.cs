@@ -341,7 +341,7 @@ public class CobrancaService : ICobrancaService
             {
                 CobrancaId = cobrancaId,
                 Valor = valor,
-                DataPagamento = DateTime.Now
+                DataPagamento = DateTime.UtcNow
             };
 
             var createdPagamento = await _pagamentoRepository.AddAsync(pagamento);

@@ -19,14 +19,6 @@ public class CentroDeCustoConfiguration : IEntityTypeConfiguration<CentroDeCusto
             .IsRequired()
             .HasMaxLength(100);
 
-        builder.Property(x => x.Tipo)
-            .IsRequired()
-            .HasConversion<int>();
-
-        builder.HasIndex(x => new { x.Nome, x.Tipo })
-            .IsUnique()
-            .HasDatabaseName("IX_CentrosDeCusto_Nome_Tipo");
-
         builder.HasMany(x => x.PlanosDePagamento)
             .WithOne(x => x.CentroDeCusto)
             .HasForeignKey(x => x.CentroDeCustoId)

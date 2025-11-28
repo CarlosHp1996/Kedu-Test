@@ -37,20 +37,17 @@ public class ApplicationDbContext : DbContext
             new CentroDeCusto
             {
                 Id = 1,
-                Nome = "Matrícula",
-                Tipo = TipoCentroDeCusto.Matricula
+                Nome = "Matrícula"
             },
             new CentroDeCusto
             {
                 Id = 2,
-                Nome = "Mensalidade",
-                Tipo = TipoCentroDeCusto.Mensalidade
+                Nome = "Mensalidade"
             },
             new CentroDeCusto
             {
                 Id = 3,
-                Nome = "Material Escolar",
-                Tipo = TipoCentroDeCusto.Material
+                Nome = "Material Escolar"
             }
         );
     }

@@ -39,7 +39,6 @@ public class UpdateCentroDeCustoHandler : IRequestHandler<UpdateCentroDeCustoCom
             }
 
             centroDeCusto.Nome = request.Nome;
-            centroDeCusto.Tipo = request.Tipo;
             await _repository.UpdateAsync(centroDeCusto);
 
             var response = _mapper.Map<CentroDeCustoResponse>(centroDeCusto);

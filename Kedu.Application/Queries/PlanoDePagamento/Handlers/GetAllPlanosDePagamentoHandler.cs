@@ -21,7 +21,7 @@ public class GetAllPlanosDePagamentoHandler : IRequestHandler<GetAllPlanosDePaga
     {
         try
         {
-            var planos = await _repository.GetAllAsync();
+            var planos = await _repository.GetAllWithRelatedDataAsync();
             var response = _mapper.Map<List<PlanoDePagamentoResponse>>(planos);
             
             return new Result<List<PlanoDePagamentoResponse>>(response)

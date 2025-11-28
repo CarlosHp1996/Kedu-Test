@@ -33,8 +33,7 @@ public class CreateCentroDeCustoHandler : IRequestHandler<CreateCentroDeCustoCom
 
             var centroDeCusto = new Domain.Entities.CentroDeCusto
             {
-                Nome = request.Nome,
-                Tipo = request.Tipo
+                Nome = request.Nome
             };
 
             var createdCentroDeCusto = await _repository.AddAsync(centroDeCusto);

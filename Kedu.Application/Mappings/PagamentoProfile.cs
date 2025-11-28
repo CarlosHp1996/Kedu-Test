@@ -16,6 +16,7 @@ public class PagamentoProfile : Profile
 
         // Entity -> Response
         CreateMap<Pagamento, PagamentoResponse>();
-        CreateMap<Pagamento, PagamentoDetailResponse>();
+        CreateMap<Pagamento, PagamentoDetailResponse>()
+            .ForMember(dest => dest.Cobranca, opt => opt.MapFrom(src => src.Cobranca));
     }
 }

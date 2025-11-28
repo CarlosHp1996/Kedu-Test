@@ -83,7 +83,7 @@ public class CobrancasController : ControllerBase
     [ProducesResponseType(typeof(Result<CobrancaResponse>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(Result<CobrancaResponse>), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(Result<CobrancaResponse>), StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult<Result<CobrancaResponse>>> UpdateCobranca(int id, [FromBody] CobrancaRequest request)
+    public async Task<ActionResult<Result<CobrancaResponse>>> UpdateCobranca(int id, [FromBody] UpdateCobrancaRequest request)
     {
         var command = new UpdateCobrancaCommand
         {

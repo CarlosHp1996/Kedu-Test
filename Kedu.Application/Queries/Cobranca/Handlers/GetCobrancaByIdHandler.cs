@@ -21,7 +21,7 @@ public class GetCobrancaByIdHandler : IRequestHandler<GetCobrancaByIdQuery, Resu
     {
         try
         {
-            var cobranca = await _repository.GetByIdAsync(request.Id);
+            var cobranca = await _repository.GetByIdWithRelatedDataAsync(request.Id);
             if (cobranca == null)
             {
                 var notFoundResult = new Result<CobrancaDetailResponse>();

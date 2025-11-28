@@ -20,4 +20,16 @@ public class PagamentoRepository : BaseRepository<Pagamento>, IPagamentoReposito
             .OrderByDescending(p => p.DataPagamento)
             .ToListAsync();
     }
+
+    public async Task<Pagamento?> GetByIdWithRelatedDataAsync(int id)
+    {
+        return await _dbSet
+            .Include(p => p.Cobranca)
+                .ThenInclude(c => c.PlanoDePagamento)
+                    .ThenInclude(pl => pl.ResponsavelFinanceiro)
+            .Include(p => p.Cobranca)
+                .ThenInclude(c => c.PlanoDePagamento)
+                    .ThenInclude(pl => pl.CentroDeCusto)
+            .FirstOrDefaultAsync(p => p.Id == id);
+    }
 }

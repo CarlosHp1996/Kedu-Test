@@ -84,11 +84,7 @@ public class RepositoryContractTests
     public void ICentroDeCustoRepository_Should_Have_Required_Methods()
     {
         // Arrange
-        var mockRepository = new Mock<ICentroDeCustoRepository>();
-
-        // Act & Assert
-        mockRepository.Setup(x => x.GetByTipoAsync(It.IsAny<Kedu.Domain.Enums.TipoCentroDeCusto>()))
-                     .ReturnsAsync((CentroDeCusto?)null);
+        var mockRepository = new Mock<ICentroDeCustoRepository>();       
 
         mockRepository.Setup(x => x.ExistsByNomeAsync(It.IsAny<string>()))
                      .ReturnsAsync(false);

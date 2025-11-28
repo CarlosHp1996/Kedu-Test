@@ -39,14 +39,38 @@ public class UpdateCobrancaHandler : IRequestHandler<UpdateCobrancaCommand, Resu
             }
 
             var originalMethod = cobranca.MetodoPagamento;
-            cobranca.Valor = request.Valor;
-            cobranca.DataVencimento = request.DataVencimento;
-            cobranca.MetodoPagamento = request.MetodoPagamento;
+            bool hasChanges = false;
 
-            // Regenerar código de pagamento se método mudou
-            if (originalMethod != request.MetodoPagamento)
+            // Atualizar apenas os campos que foram fornecidos
+            if (request.Valor.HasValue)
             {
-                cobranca.GeneratePaymentCode();
+                cobranca.Valor = request.Valor.Value;
+                hasChanges = true;
+            }
+
+            if (request.DataVencimento.HasValue)
+            {
+                cobranca.DataVencimento = request.DataVencimento.Value;
+                hasChanges = true;
+            }
+
+            if (request.MetodoPagamento.HasValue)
+            {
+                cobranca.MetodoPagamento = request.MetodoPagamento.Value;
+                hasChanges = true;
+
+                // Regenerar código de pagamento se método mudou
+                if (originalMethod != request.MetodoPagamento.Value)
+                {
+                    cobranca.GeneratePaymentCode();
+                }
+            }
+
+            if (!hasChanges)
+            {
+                var noChangesResult = new Result<CobrancaResponse>();
+                noChangesResult.WithError("Nenhum campo foi fornecido para atualização");
+                return noChangesResult;
             }
 
             await _repository.UpdateAsync(cobranca);

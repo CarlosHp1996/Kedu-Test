@@ -9,5 +9,4 @@ public class UpdateCentroDeCustoCommand : IRequest<Result<CentroDeCustoResponse>
 {
     public int Id { get; set; }
     public required string Nome { get; set; }
-    public TipoCentroDeCusto Tipo { get; set; }
 }

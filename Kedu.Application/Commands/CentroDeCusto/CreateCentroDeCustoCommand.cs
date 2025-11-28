@@ -8,5 +8,4 @@ namespace Kedu.Application.Commands.CentroDeCusto;
 public class CreateCentroDeCustoCommand : IRequest<Result<CentroDeCustoResponse>>
 {
     public required string Nome { get; set; }
-    public TipoCentroDeCusto Tipo { get; set; }
 }

@@ -31,8 +31,7 @@ public class CentrosDeCustoController : ControllerBase
     {
         var command = new CreateCentroDeCustoCommand
         {
-            Nome = request.Nome,
-            Tipo = request.Tipo
+            Nome = request.Nome
         };
 
         var result = await _mediator.Send(command);
@@ -85,8 +84,7 @@ public class CentrosDeCustoController : ControllerBase
         var command = new UpdateCentroDeCustoCommand
         {
             Id = id,
-            Nome = request.Nome,
-            Tipo = request.Tipo
+            Nome = request.Nome
         };
 
         var result = await _mediator.Send(command);

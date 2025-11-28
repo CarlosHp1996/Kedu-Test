@@ -9,7 +9,6 @@ public class PlanoDePagamentoResponse
     public string ResponsavelFinanceiroNome { get; set; } = string.Empty;
     public int CentroDeCustoId { get; set; }
     public string CentroDeCustoNome { get; set; } = string.Empty;
-    public TipoCentroDeCusto CentroDeCustoTipo { get; set; }
     public decimal ValorTotal { get; set; }
     public int QuantidadeCobrancas { get; set; }
     public List<CobrancaResponse> Cobrancas { get; set; } = [];

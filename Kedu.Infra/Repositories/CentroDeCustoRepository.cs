@@ -12,12 +12,6 @@ public class CentroDeCustoRepository : BaseRepository<CentroDeCusto>, ICentroDeC
     {
     }
 
-    public async Task<CentroDeCusto?> GetByTipoAsync(TipoCentroDeCusto tipo)
-    {
-        return await _dbSet
-            .FirstOrDefaultAsync(c => c.Tipo == tipo);
-    }
-
     public async Task<bool> ExistsByNomeAsync(string nome)
     {
         return await _dbSet

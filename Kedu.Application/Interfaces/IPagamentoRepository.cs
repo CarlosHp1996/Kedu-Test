@@ -5,4 +5,5 @@ namespace Kedu.Application.Interfaces;
 public interface IPagamentoRepository : IBaseRepository<Pagamento>
 {
     Task<IEnumerable<Pagamento>> GetByCobrancaIdAsync(int cobrancaId);
+    Task<Pagamento?> GetByIdWithRelatedDataAsync(int id);
 }

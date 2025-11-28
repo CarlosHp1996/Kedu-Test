@@ -24,9 +24,20 @@ public class PlanoDePagamentoRepository : BaseRepository<PlanoDePagamento>, IPla
     public async Task<IEnumerable<PlanoDePagamento>> GetByResponsavelIdAsync(int responsavelId)
     {
         return await _dbSet
+            .Include(p => p.ResponsavelFinanceiro)
             .Include(p => p.CentroDeCusto)
             .Include(p => p.Cobrancas)
             .Where(p => p.ResponsavelFinanceiroId == responsavelId)
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<PlanoDePagamento>> GetAllWithRelatedDataAsync()
+    {
+        return await _dbSet
+            .Include(p => p.ResponsavelFinanceiro)
+            .Include(p => p.CentroDeCusto)
+            .Include(p => p.Cobrancas)
+                .ThenInclude(c => c.Pagamentos)
             .ToListAsync();
     }
 

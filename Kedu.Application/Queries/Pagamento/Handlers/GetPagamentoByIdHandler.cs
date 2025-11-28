@@ -21,7 +21,7 @@ public class GetPagamentoByIdHandler : IRequestHandler<GetPagamentoByIdQuery, Re
     {
         try
         {
-            var pagamento = await _repository.GetByIdAsync(request.Id);
+            var pagamento = await _repository.GetByIdWithRelatedDataAsync(request.Id);
             if (pagamento == null)
             {
                 var notFoundResult = new Result<PagamentoDetailResponse>();

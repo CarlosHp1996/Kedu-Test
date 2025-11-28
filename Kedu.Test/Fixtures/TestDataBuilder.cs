@@ -19,8 +19,7 @@ public static class TestDataBuilder
         return new CentroDeCusto
         {
             Id = 1,
-            Nome = "Matrícula",
-            Tipo = TipoCentroDeCusto.Matricula
+            Nome = "Matrícula"
         };
     }
 

@@ -50,7 +50,6 @@ public class PlanoDePagamentoTests
 
         // Assert
         plano.CentroDeCusto.Should().NotBeNull();
-        plano.CentroDeCusto.Tipo.Should().Be(TipoCentroDeCusto.Matricula);
     }
 
     [Fact]

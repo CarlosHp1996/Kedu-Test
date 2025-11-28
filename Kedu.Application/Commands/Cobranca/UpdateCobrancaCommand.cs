@@ -8,7 +8,7 @@ namespace Kedu.Application.Commands.Cobranca;
 public class UpdateCobrancaCommand : IRequest<Result<CobrancaResponse>>
 {
     public int Id { get; set; }
-    public decimal Valor { get; set; }
-    public DateTime DataVencimento { get; set; }
-    public MetodoPagamento MetodoPagamento { get; set; }
+    public decimal? Valor { get; set; }
+    public DateTime? DataVencimento { get; set; }
+    public MetodoPagamento? MetodoPagamento { get; set; }
 }

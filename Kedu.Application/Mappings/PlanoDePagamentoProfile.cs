@@ -21,7 +21,6 @@ public class PlanoDePagamentoProfile : Profile
         CreateMap<PlanoDePagamento, PlanoDePagamentoResponse>()
             .ForMember(dest => dest.ResponsavelFinanceiroNome, opt => opt.MapFrom(src => src.ResponsavelFinanceiro.Nome))
             .ForMember(dest => dest.CentroDeCustoNome, opt => opt.MapFrom(src => src.CentroDeCusto.Nome))
-            .ForMember(dest => dest.CentroDeCustoTipo, opt => opt.MapFrom(src => src.CentroDeCusto.Tipo))
             .ForMember(dest => dest.QuantidadeCobrancas, opt => opt.MapFrom(src => src.Cobrancas.Count));
 
         CreateMap<PlanoDePagamento, PlanoDePagamentoDetailResponse>()

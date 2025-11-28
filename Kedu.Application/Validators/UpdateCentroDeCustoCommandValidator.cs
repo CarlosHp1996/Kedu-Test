@@ -17,9 +17,5 @@ public class UpdateCentroDeCustoCommandValidator : AbstractValidator<UpdateCentr
             .WithMessage("Nome é obrigatório")
             .Length(2, 100)
             .WithMessage("Nome deve ter entre 2 e 100 caracteres");
-
-        RuleFor(x => x.Tipo)
-            .Must(tipo => Enum.IsDefined(typeof(TipoCentroDeCusto), tipo))
-            .WithMessage("Tipo de centro de custo deve ser MATRICULA, MENSALIDADE ou MATERIAL");
     }
 }
